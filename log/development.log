@@ -1,0 +1,2338 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.5ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateImages (20090912144617)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090912144617')[0m
+Migrating to AddPaperclipStuffToImages (20090912144917)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mALTER TABLE "images" ADD "image_file_name" varchar(255)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mALTER TABLE "images" ADD "image_content_type" varchar(255)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mALTER TABLE "images" ADD "image_file_size" integer[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090912144917')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("images")[0m
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 08:54:53) [GET]
+  [4;36;1mImage Load (0.5ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 148ms (View: 143, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 08:54:55) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 08:57:16) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4164.0>}}
+  [4;35;1mImage Create (0.8ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 77700, '2009-09-12 14:57:16', 'image/jpeg', '2009-09-12 14:57:16', 'Photo 1.jpg')[0m
+Redirected to http://localhost:3000/images/1
+Completed in 71ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 08:57:16) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 1) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/images/1]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 08:57:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 1) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/images/1]
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mImage Load (0.4ms)[0m   [0;1mSELECT * FROM "images" LIMIT 1[0m
+  [4;35;1mImage Delete all (6.0ms)[0m   [0mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:00:41) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:00:46) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4164.1>}}
+  [4;36;1mImage Create (0.5ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 77700, '2009-09-12 15:00:47', 'image/jpeg', '2009-09-12 15:00:47', 'Photo 1.jpg')[0m
+Redirected to http://localhost:3000/images/2
+Completed in 968ms (DB: 0) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:00:47) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mImage Load (0.3ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 2) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/images/2]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:01:11) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 2) [0m
+Rendering template within layouts/images
+Rendering images/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.image) on line #5 of app/views/images/show.html.erb:
+2:   <%= image_tag @image.image.url %>
+3: </p>
+4: <p>
+5:   <%= image_tag @image_tag.image.url(:medium) %>
+6: </p>
+7: 
+8: <p>
+
+    app/views/images/show.html.erb:5
+    app/controllers/images_controller.rb:19:in `show'
+
+Rendered rescues/_trace (38.1ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:01:44) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 2) [0m
+Rendering template within layouts/images
+Rendering images/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.image) on line #5 of app/views/images/show.html.erb:
+2:   <%= image_tag @image.image.url %>
+3: </p>
+4: <p>
+5:   <%= image_tag @image_tag.image.url(:medium) %>
+6: </p>
+7: 
+8: <p>
+
+    app/views/images/show.html.erb:5
+    app/controllers/images_controller.rb:19:in `show'
+
+Rendered rescues/_trace (36.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mImage Delete all (1.9ms)[0m   [0;1mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:05:48) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:05:48) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:05:53) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4187.0>}}
+  [4;36;1mImage Create (0.7ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 77700, '2009-09-12 15:05:54', 'image/jpeg', '2009-09-12 15:05:54', 'Photo 1.jpg')[0m
+Redirected to http://localhost:3000/images/3
+Completed in 272ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:05:54) [GET]
+  Parameters: {"id"=>"3"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 3) [0m
+Rendering template within layouts/images
+Rendering images/show
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.image) on line #5 of app/views/images/show.html.erb:
+2:   <%= image_tag @image.image.url %>
+3: </p>
+4: <p>
+5:   <%= image_tag @image_tag.image.url(:medium) %>
+6: </p>
+7: 
+8: <p>
+
+    app/views/images/show.html.erb:5
+    app/controllers/images_controller.rb:19:in `show'
+
+Rendered rescues/_trace (86.2ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mImage Delete all (2.8ms)[0m   [0mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:13:11) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 09:13:13) [GET]
+  [4;36;1mImage Load (0.3ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 8ms (View: 4, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:13:14) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:13:20) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4218.0>}}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 77700, '2009-09-12 15:13:21', 'image/jpeg', '2009-09-12 15:13:21', 'Photo 1.jpg')[0m
+Redirected to http://localhost:3000/images/4
+Completed in 325ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:13:21) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mImage Load (0.3ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 4) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/images/4]
+  [4;36;1mImage Delete all (1.7ms)[0m   [0;1mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 09:14:42) [GET]
+  [4;35;1mImage Load (0.4ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 5ms (View: 1, DB: 0) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:16:57) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:17:34) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4218.0>}}
+  [4;36;1mImage Create (0.5ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8834301, '2009-09-12 15:17:36', 'image/jpeg', '2009-09-12 15:17:36', 'IMG_3339m.jpg')[0m
+Redirected to http://localhost:3000/images/5
+Completed in 2751ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:17:36) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 5) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/5]
+  [4;35;1mImage Delete all (3.1ms)[0m   [0mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:19:12) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:19:19) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4218.0>}}
+  [4;36;1mImage Create (0.5ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8834301, '2009-09-12 15:19:21', 'image/jpeg', '2009-09-12 15:19:21', 'IMG_3339m.jpg')[0m
+Redirected to http://localhost:3000/images/6
+Completed in 2856ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:19:22) [GET]
+  Parameters: {"id"=>"6"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 6) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/6]
+  [4;36;1mImage Delete all (3.0ms)[0m   [0;1mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:23:35) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4218.0>}}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8834301, '2009-09-12 15:23:38', 'image/jpeg', '2009-09-12 15:23:38', 'IMG_3339m.jpg')[0m
+Redirected to http://localhost:3000/images/7
+Completed in 2797ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:23:38) [GET]
+  Parameters: {"id"=>"7"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 7) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/images/7]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:24:01) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4218.0>}}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6928141, '2009-09-12 15:24:03', 'image/jpeg', '2009-09-12 15:24:03', 'IMG_3498m.jpg')[0m
+Redirected to http://localhost:3000/images/8
+Completed in 2632ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:24:04) [GET]
+  Parameters: {"id"=>"8"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 8) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/8]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 09:26:00) [GET]
+  [4;36;1mImage Load (0.5ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 09:26:33) [GET]
+  [4;35;1mImage Load (0.5ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 09:26:45) [GET]
+  [4;36;1mImage Load (0.5ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 09:28:40) [GET]
+  [4;36;1mImage Load (0.8ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 21ms (View: 15, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 09:28:41) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 13ms (View: 8, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 09:28:47) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4294.0>}}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 15:28:49', 'image/jpeg', '2009-09-12 15:28:49', 'IMG_3409m.jpg')[0m
+Redirected to http://localhost:3000/images/9
+Completed in 2872ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:28:50) [GET]
+  Parameters: {"id"=>"9"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 9) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/images/9]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 09:36:10) [GET]
+  Parameters: {"id"=>"9"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 9) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 15ms (View: 9, DB: 0) | 200 OK [http://localhost/images/9]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:02:14) [GET]
+  [4;36;1mImage Load (0.7ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 18ms (View: 13, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:02:58) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 27ms (View: 22, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:03:09) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}}
+  [4;35;1mImage Create (25.0ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9203593, '2009-09-12 16:03:12', 'image/jpeg', '2009-09-12 16:03:12', 'IMG_3542m.jpg')[0m
+Redirected to http://localhost:3000/images/10
+Completed in 3296ms (DB: 25) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 10:03:12) [GET]
+  Parameters: {"id"=>"10"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 10) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 119ms (View: 113, DB: 0) | 200 OK [http://localhost/images/10]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:06:54) [GET]
+  [4;35;1mImage Load (0.6ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 10ms (View: 6, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:12:57) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:12:57) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:16:39) [GET]
+  [4;36;1mImage Load (0.6ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 13ms (View: 9, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:20:40) [GET]
+  [4;35;1mImage Load (0.6ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 13ms (View: 9, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:21:10) [GET]
+  [4;36;1mImage Load (0.6ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 10ms (View: 6, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:21:14) [GET]
+  [4;35;1mImage Load (0.6ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 10ms (View: 6, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:21:36) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:21:36) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:21:38) [GET]
+  [4;36;1mImage Load (0.6ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 10ms (View: 6, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:22:13) [GET]
+  [4;35;1mImage Load (0.8ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 12ms (View: 7, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:22:15) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:23:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:23:31) [GET]
+
+ActionController::RoutingError (No route matches "/assets/progress-bar/bar.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:23:45) [GET]
+  [4;36;1mImage Load (0.6ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 13ms (View: 8, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:23:49) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:23:49) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:23:49) [GET]
+
+ActionController::RoutingError (No route matches "/assets/progress-bar/bar.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:26:15) [GET]
+Rendering template within layouts/images
+Rendering images/new
+
+ActionView::TemplateError (image_url failed to generate from {:controller=>"images", :action=>"show", :id=>"fancyupload/progress-bar/bar.gif"}, expected: {:controller=>"images", :action=>"show"}, diff: {:id=>"fancyupload/progress-bar/bar.gif"}) on line #24 of app/views/images/new.html.erb:
+21:       	</p>
+22:       	<div>
+23:       		<strong class="overall-title"></strong><br />
+24:       		<%= image_tag image_path('fancyupload/progress-bar/bar.gif'), :class => "progress overall-progress" %>
+25:       	</div>
+26:       	<div>
+27:       		<strong class="current-title"></strong><br />
+
+    (eval):16:in `image_path'
+    app/views/images/new.html.erb:24
+    app/controllers/images_controller.rb:30:in `new'
+
+Rendered rescues/_trace (91.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:27:08) [GET]
+Rendering template within layouts/images
+Rendering images/new
+
+ActionView::TemplateError (image_url failed to generate from {:controller=>"images", :action=>"show", :id=>"fancyupload/progress-bar/bar.gif"}, expected: {:controller=>"images", :action=>"show"}, diff: {:id=>"fancyupload/progress-bar/bar.gif"}) on line #24 of app/views/images/new.html.erb:
+21:       	</p>
+22:       	<div>
+23:       		<strong class="overall-title"></strong><br />
+24:       		<%= image_tag image_path('fancyupload/progress-bar/bar.gif'), {:class => "progress overall-progress"} %>
+25:       	</div>
+26:       	<div>
+27:       		<strong class="current-title"></strong><br />
+
+    (eval):16:in `image_path'
+    app/views/images/new.html.erb:24
+    app/controllers/images_controller.rb:30:in `new'
+
+Rendered rescues/_trace (39.1ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:27:47) [GET]
+Rendering template within layouts/images
+Rendering images/new
+
+ActionView::TemplateError (image_url failed to generate from {:controller=>"images", :action=>"show", :id=>"fancyupload/progress-bar/bar.gif"}, expected: {:controller=>"images", :action=>"show"}, diff: {:id=>"fancyupload/progress-bar/bar.gif"}) on line #24 of app/views/images/new.html.erb:
+21:       	</p>
+22:       	<div>
+23:       		<strong class="overall-title"></strong><br />
+24:       		<%= image_tag image_path('fancyupload/progress-bar/bar.gif') %>
+25:       	</div>
+26:       	<div>
+27:       		<strong class="current-title"></strong><br />
+
+    (eval):16:in `image_path'
+    app/views/images/new.html.erb:24
+    app/controllers/images_controller.rb:30:in `new'
+
+Rendered rescues/_trace (99.7ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:28:37) [GET]
+Rendering template within layouts/images
+Rendering images/new
+
+ActionView::TemplateError (image_url failed to generate from {:controller=>"images", :action=>"show", :id=>"fancyupload/progress-bar/bar.gif"}, expected: {:controller=>"images", :action=>"show"}, diff: {:id=>"fancyupload/progress-bar/bar.gif"}) on line #24 of app/views/images/new.html.erb:
+21:       	</p>
+22:       	<div>
+23:       		<strong class="overall-title"></strong><br />
+24:       		<%= image_path('fancyupload/progress-bar/bar.gif') %>
+25:       	</div>
+26:       	<div>
+27:       		<strong class="current-title"></strong><br />
+
+    (eval):16:in `image_path'
+    app/views/images/new.html.erb:24
+    app/controllers/images_controller.rb:30:in `new'
+
+Rendered rescues/_trace (39.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:28:52) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 10ms (View: 6, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:29:13) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:29:13) [GET]
+
+ActionController::RoutingError (No route matches "/images/images/fancyupload/progress-bar/bar.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:29:19) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:30:05) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 11ms (View: 7, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:30:05) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:33:15) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:38:00) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 14ms (View: 9, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:38:01) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:38:01) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:38:06) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:38:10) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:38:10) [POST]
+  Parameters: {"Filename"=>"IMG_3339m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (30.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:38:10) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:38:11) [POST]
+  Parameters: {"Filename"=>"IMG_3340m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (57.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:38:11) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (30.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:42:12) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 14ms (View: 9, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:12) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:42:14) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:42:23) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:24) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:24) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:27) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:27) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:42:31) [POST]
+  Parameters: {"Filename"=>"IMG_3340m.jpg", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (28.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:42:32) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (28.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:42:32) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:42:32) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (28.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:42:33) [POST]
+  Parameters: {"Filename"=>"IMG_3419m.jpg", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (69.5ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:44:03) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:44:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:44:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:44:58) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 13ms (View: 9, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:44:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:44:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:45:02) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:45:04) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:45:04) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (67.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:45:04) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:45:05) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "authenticity_token"=>"k6MtVoDvFdK4qzxp2pXqnY0IZIdfr+gpYUv1vFL5zX8=", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered rescues/_trace (27.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (unprocessable_entity)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:46:31) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:46:33) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:33) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:35) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:46:49) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 14ms (View: 10, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:49) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:50) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:53) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:55) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:46:55) [POST]
+  Parameters: {"Filename"=>"IMG_3340m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.4ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, NULL, '2009-09-12 16:46:55', NULL, '2009-09-12 16:46:55', NULL)[0m
+Redirected to http://localhost:3000/images/11
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/images]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:46:55) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:46:56) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.4ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, NULL, '2009-09-12 16:46:56', NULL, '2009-09-12 16:46:56', NULL)[0m
+Redirected to http://localhost:3000/images/12
+Completed in 12ms (DB: 0) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:46:56) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.4ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, NULL, '2009-09-12 16:46:56', NULL, '2009-09-12 16:46:56', NULL)[0m
+Redirected to http://localhost:3000/images/13
+Completed in 9ms (DB: 0) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:47:16) [GET]
+  [4;36;1mImage Load (0.8ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 13ms (View: 8, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 10:47:16) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 10:47:22) [GET]
+  Parameters: {"id"=>"11"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 11) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/images/11]
+
+
+Processing ImagesController#original to png (for 127.0.0.1 at 2009-09-12 10:47:22) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to original. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 10:47:22) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#medium to png (for 127.0.0.1 at 2009-09-12 10:47:22) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to medium. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:47:24) [GET]
+  [4;36;1mImage Load (0.7ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 13ms (View: 8, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 10:47:24) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2009-09-12 10:47:26) [DELETE]
+  Parameters: {"id"=>"11"}
+  [4;35;1mImage Load (0.3ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 11) [0m
+  [4;36;1mImage Destroy (0.4ms)[0m   [0;1mDELETE FROM "images" WHERE "id" = 11[0m
+Redirected to http://localhost:3000/images
+Completed in 10ms (DB: 1) | 302 Found [http://localhost/images/11]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:47:26) [GET]
+  [4;35;1mImage Load (0.7ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 11ms (View: 7, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 10:47:27) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 10:47:27) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2009-09-12 10:47:30) [DELETE]
+  Parameters: {"id"=>"12"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 12) [0m
+  [4;35;1mImage Destroy (0.3ms)[0m   [0mDELETE FROM "images" WHERE "id" = 12[0m
+Redirected to http://localhost:3000/images
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/images/12]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:47:30) [GET]
+  [4;36;1mImage Load (0.7ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 11ms (View: 7, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 10:47:30) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2009-09-12 10:47:32) [DELETE]
+  Parameters: {"id"=>"13"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 13) [0m
+  [4;36;1mImage Destroy (0.3ms)[0m   [0;1mDELETE FROM "images" WHERE "id" = 13[0m
+Redirected to http://localhost:3000/images
+Completed in 7ms (DB: 0) | 302 Found [http://localhost/images/13]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 10:47:32) [GET]
+  [4;35;1mImage Load (0.6ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 10ms (View: 6, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:49:14) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:49:14) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:49:15) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:49:19) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:49:36) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:49:37) [POST]
+  Parameters: {"Filename"=>"IMG_3339m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.4ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, NULL, '2009-09-12 16:49:37', NULL, '2009-09-12 16:49:37', NULL)[0m
+Redirected to http://localhost:3000/images/14
+Completed in 8ms (DB: 0) | 302 Found [http://localhost/images]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:49:37) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:50:46) [POST]
+  Parameters: {"commit"=>"Create", "image"=>{"image"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}}
+  [4;35;1mImage Create (0.7ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8834301, '2009-09-12 16:50:49', 'image/jpeg', '2009-09-12 16:50:49', 'IMG_3339m.jpg')[0m
+Redirected to http://localhost:3000/images/15
+Completed in 3042ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 10:50:49) [GET]
+  Parameters: {"id"=>"15"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 15) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/15]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 10:51:26) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:51:26) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:53:34) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:53:36) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:53:36) [POST]
+  Parameters: {"Filename"=>"IMG_3340m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.4ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, NULL, '2009-09-12 16:53:36', NULL, '2009-09-12 16:53:36', NULL)[0m
+Redirected to http://localhost:3000/images/16
+Completed in 10ms (DB: 0) | 302 Found [http://localhost/images]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 10:53:36) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:58:02) [POST]
+  Parameters: {"Filename"=>"IMG_3339m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+===========FILE DATA INSPECT=============
+#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>
+  [4;36;1mImage Create (0.5ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, NULL, '2009-09-12 16:58:02', NULL, '2009-09-12 16:58:02', NULL)[0m
+Redirected to http://localhost:3000/images/17
+Completed in 10ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 10:59:23) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+===========FILE DATA INSPECT=============
+
+NoMethodError (undefined method `[]' for #<Tempfile:0x2f7ada8>):
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/delegate.rb:270:in `method_missing'
+  app/controllers/images_controller.rb:46:in `create'
+
+Rendered rescues/_trace (29.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:00:04) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+START===========FILE DATA INSPECT=============
+
+NoMethodError (undefined method `[]' for #<Tempfile:0x2f73b20>):
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/delegate.rb:270:in `method_missing'
+  app/controllers/images_controller.rb:46:in `create'
+
+Rendered rescues/_trace (26.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:00:49) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.2>}
+START===========FILE DATA INSPECT=============
+
+NoMethodError (undefined method `[]' for #<Tempfile:0x2ea309c>):
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/delegate.rb:270:in `method_missing'
+  app/controllers/images_controller.rb:46:in `create'
+
+Rendered rescues/_trace (28.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:01:31) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:01:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:01:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:01:33) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:01:47) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:01:47) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 17:01:50', 'application/octet-stream', '2009-09-12 17:01:50', 'IMG_3409m.jpg')[0m
+Redirected to http://localhost:3000/images/18
+Completed in 2780ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:01:50) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:02:02) [GET]
+  [4;36;1mImage Load (1.0ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 16ms (View: 11, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 11:02:02) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 11:02:05) [GET]
+  Parameters: {"id"=>"18"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 18) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/18]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:02:10) [GET]
+  [4;36;1mImage Load (0.9ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 39ms (View: 10, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 11:02:10) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2009-09-12 11:02:12) [DELETE]
+  Parameters: {"id"=>"17"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 17) [0m
+  [4;36;1mImage Destroy (0.3ms)[0m   [0;1mDELETE FROM "images" WHERE "id" = 17[0m
+Redirected to http://localhost:3000/images
+Completed in 10ms (DB: 1) | 302 Found [http://localhost/images/17]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:02:12) [GET]
+  [4;35;1mImage Load (0.8ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 13ms (View: 9, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 11:02:12) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 11:02:12) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2009-09-12 11:02:15) [DELETE]
+  Parameters: {"id"=>"16"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 16) [0m
+  [4;35;1mImage Destroy (0.4ms)[0m   [0mDELETE FROM "images" WHERE "id" = 16[0m
+Redirected to http://localhost:3000/images
+Completed in 142ms (DB: 1) | 302 Found [http://localhost/images/16]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:02:16) [GET]
+  [4;36;1mImage Load (0.8ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 13ms (View: 8, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#thumb to png (for 127.0.0.1 at 2009-09-12 11:02:16) [GET]
+  Parameters: {"id"=>"missing"}
+
+ActionController::UnknownAction (No action responded to thumb. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2009-09-12 11:02:18) [DELETE]
+  Parameters: {"id"=>"14"}
+  [4;35;1mImage Load (0.2ms)[0m   [0mSELECT * FROM "images" WHERE ("images"."id" = 14) [0m
+  [4;36;1mImage Destroy (0.3ms)[0m   [0;1mDELETE FROM "images" WHERE "id" = 14[0m
+Redirected to http://localhost:3000/images
+Completed in 9ms (DB: 1) | 302 Found [http://localhost/images/14]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:02:18) [GET]
+  [4;35;1mImage Load (0.7ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 12ms (View: 8, DB: 1) | 200 OK [http://localhost/images]
+  [4;36;1mImage Delete all (2.1ms)[0m   [0;1mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:02:39) [GET]
+  [4;36;1mImage Load (0.3ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:02:41) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:02:41) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:02:41) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:02:45) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:02:46) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:02:47) [POST]
+  Parameters: {"Filename"=>"IMG_3339m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8834301, '2009-09-12 17:02:49', 'application/octet-stream', '2009-09-12 17:02:49', 'IMG_3339m.jpg')[0m
+Redirected to http://localhost:3000/images/19
+Completed in 2829ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:02:50) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:02:50) [POST]
+  Parameters: {"Filename"=>"IMG_3340m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 10058838, '2009-09-12 17:02:53', 'application/octet-stream', '2009-09-12 17:02:53', 'IMG_3340m.jpg')[0m
+Redirected to http://localhost:3000/images/20
+Completed in 2964ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:02:53) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.7ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 4350946, '2009-09-12 17:02:56', 'application/octet-stream', '2009-09-12 17:02:56', 'IMG_3370m.jpg')[0m
+Redirected to http://localhost:3000/images/21
+Completed in 2289ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:02:56) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 17:02:59', 'application/octet-stream', '2009-09-12 17:02:59', 'IMG_3409m.jpg')[0m
+Redirected to http://localhost:3000/images/22
+Completed in 2810ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:00) [POST]
+  Parameters: {"Filename"=>"IMG_3419m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.7ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9334730, '2009-09-12 17:03:02', 'application/octet-stream', '2009-09-12 17:03:02', 'IMG_3419m.jpg')[0m
+Redirected to http://localhost:3000/images/23
+Completed in 2775ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:03) [POST]
+  Parameters: {"Filename"=>"IMG_3465m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.5ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6161975, '2009-09-12 17:03:05', 'application/octet-stream', '2009-09-12 17:03:05', 'IMG_3465m.jpg')[0m
+Redirected to http://localhost:3000/images/24
+Completed in 2545ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:06) [POST]
+  Parameters: {"Filename"=>"IMG_3496m.jpg .jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 7603243, '2009-09-12 17:03:08', 'application/octet-stream', '2009-09-12 17:03:08', 'IMG_3496m.jpg .jpg')[0m
+Redirected to http://localhost:3000/images/25
+Completed in 2680ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:09) [POST]
+  Parameters: {"Filename"=>"IMG_3498m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6928141, '2009-09-12 17:03:11', 'application/octet-stream', '2009-09-12 17:03:11', 'IMG_3498m.jpg')[0m
+Redirected to http://localhost:3000/images/26
+Completed in 2733ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:12) [POST]
+  Parameters: {"Filename"=>"IMG_3516m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.2>}
+  [4;35;1mImage Create (0.7ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6906533, '2009-09-12 17:03:14', 'application/octet-stream', '2009-09-12 17:03:14', 'IMG_3516m.jpg')[0m
+Redirected to http://localhost:3000/images/27
+Completed in 2608ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:15) [POST]
+  Parameters: {"Filename"=>"IMG_3542m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.5ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9203593, '2009-09-12 17:03:18', 'application/octet-stream', '2009-09-12 17:03:18', 'IMG_3542m.jpg')[0m
+Redirected to http://localhost:3000/images/28
+Completed in 2876ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:18) [POST]
+  Parameters: {"Filename"=>"IMG_3628m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;35;1mImage Create (0.5ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 5124668, '2009-09-12 17:03:21', 'application/octet-stream', '2009-09-12 17:03:21', 'IMG_3628m.jpg')[0m
+Redirected to http://localhost:3000/images/29
+Completed in 2303ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:03:21) [POST]
+  Parameters: {"Filename"=>"IMG_3676m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9597866, '2009-09-12 17:03:24', 'application/octet-stream', '2009-09-12 17:03:24', 'IMG_3676m.jpg')[0m
+Redirected to http://localhost:3000/images/30
+Completed in 2883ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:05:38) [GET]
+  [4;35;1mImage Load (1.6ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 23ms (View: 16, DB: 2) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:17:41) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:17:42) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:17:42) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:17:54) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:17:54) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:18:15) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:18:15) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:18:15) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.7ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 4350946, '2009-09-12 17:18:18', 'image/jpeg', '2009-09-12 17:18:18', 'IMG_3370m.jpg')[0m
+Redirected to http://localhost:3000/images/31
+Completed in 2265ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:18:18) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:18:18) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:18:18) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 17:18:21', 'image/jpeg', '2009-09-12 17:18:21', 'IMG_3409m.jpg')[0m
+Redirected to http://localhost:3000/images/32
+Completed in 2774ms (DB: 1) | 302 Found [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:22:50) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:50) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:50) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:53) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:53) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:56) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:56) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:22:56) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.5ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 4350946, '2009-09-12 17:22:58', 'image/jpeg', '2009-09-12 17:22:58', 'IMG_3370m.jpg')[0m
+
+TypeError (Symbol as array index):
+  app/controllers/images_controller.rb:50:in `[]='
+  app/controllers/images_controller.rb:50:in `create'
+  app/controllers/images_controller.rb:48:in `create'
+
+Rendered rescues/_trace (33.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:58) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:22:59) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:22:59) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;35;1mImage Create (277.3ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 17:23:01', 'image/jpeg', '2009-09-12 17:23:01', 'IMG_3409m.jpg')[0m
+
+TypeError (Symbol as array index):
+  app/controllers/images_controller.rb:50:in `[]='
+  app/controllers/images_controller.rb:50:in `create'
+  app/controllers/images_controller.rb:48:in `create'
+
+Rendered rescues/_trace (76.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:23:02) [POST]
+  Parameters: {"Filename"=>"IMG_3419m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9334730, '2009-09-12 17:23:05', 'image/jpeg', '2009-09-12 17:23:05', 'IMG_3419m.jpg')[0m
+
+TypeError (Symbol as array index):
+  app/controllers/images_controller.rb:50:in `[]='
+  app/controllers/images_controller.rb:50:in `create'
+  app/controllers/images_controller.rb:48:in `create'
+
+Rendered rescues/_trace (33.0ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:24:31) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:35) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:35) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:36) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:36) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:24:36) [POST]
+  Parameters: {"Filename"=>"IMG_3419m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9334730, '2009-09-12 17:24:39', 'image/jpeg', '2009-09-12 17:24:39', 'IMG_3419m.jpg')[0m
+
+TypeError (can't convert String into Integer):
+  app/controllers/images_controller.rb:50:in `[]='
+  app/controllers/images_controller.rb:50:in `create'
+  app/controllers/images_controller.rb:48:in `create'
+
+Rendered rescues/_trace (82.4ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:40) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:24:40) [POST]
+  Parameters: {"Filename"=>"IMG_3465m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.7ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6161975, '2009-09-12 17:24:42', 'image/jpeg', '2009-09-12 17:24:42', 'IMG_3465m.jpg')[0m
+
+TypeError (can't convert String into Integer):
+  app/controllers/images_controller.rb:50:in `[]='
+  app/controllers/images_controller.rb:50:in `create'
+  app/controllers/images_controller.rb:48:in `create'
+
+Rendered rescues/_trace (82.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:24:43) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/failed.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:26:13) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:13) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:13) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/progress-bar/progress.gif" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/file.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:17) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:17) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/uploading.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:26:18) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 17:26:20', 'image/jpeg', '2009-09-12 17:26:20', 'IMG_3409m.jpg')[0m
+Completed in 2769ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:20) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/success.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:26:20) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/assets/success.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:42:06) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 71ms (View: 66, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:42:13) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.7ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 4350946, '2009-09-12 17:42:16', 'image/jpeg', '2009-09-12 17:42:16', 'IMG_3370m.jpg')[0m
+Completed in 2379ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:42:16) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.7ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 17:42:19', 'image/jpeg', '2009-09-12 17:42:19', 'IMG_3409m.jpg')[0m
+Completed in 2774ms (View: 2, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:42:20) [POST]
+  Parameters: {"Filename"=>"IMG_3419m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.7ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9334730, '2009-09-12 17:42:22', 'image/jpeg', '2009-09-12 17:42:22', 'IMG_3419m.jpg')[0m
+Completed in 2807ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:42:35) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/images/new]
+  [4;35;1mImage Delete all (3.4ms)[0m   [0mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:42:48) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:26) [POST]
+  Parameters: {"Filename"=>"IMG_3339m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8834301, '2009-09-12 17:44:29', 'image/jpeg', '2009-09-12 17:44:29', 'IMG_3339m.jpg')[0m
+Completed in 2771ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:30) [POST]
+  Parameters: {"Filename"=>"IMG_3340m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;36;1mImage Create (0.7ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 10058838, '2009-09-12 17:44:32', 'image/jpeg', '2009-09-12 17:44:32', 'IMG_3340m.jpg')[0m
+Completed in 2964ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:33) [POST]
+  Parameters: {"Filename"=>"IMG_3370m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.2>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 4350946, '2009-09-12 17:44:35', 'image/jpeg', '2009-09-12 17:44:35', 'IMG_3370m.jpg')[0m
+Completed in 2281ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:36) [POST]
+  Parameters: {"Filename"=>"IMG_3409m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8720181, '2009-09-12 17:44:38', 'image/jpeg', '2009-09-12 17:44:38', 'IMG_3409m.jpg')[0m
+Completed in 2780ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:39) [POST]
+  Parameters: {"Filename"=>"IMG_3419m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9334730, '2009-09-12 17:44:42', 'image/jpeg', '2009-09-12 17:44:42', 'IMG_3419m.jpg')[0m
+Completed in 2805ms (View: 2, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:42) [POST]
+  Parameters: {"Filename"=>"IMG_3465m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6161975, '2009-09-12 17:44:45', 'image/jpeg', '2009-09-12 17:44:45', 'IMG_3465m.jpg')[0m
+Completed in 2548ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:45) [POST]
+  Parameters: {"Filename"=>"IMG_3496m.jpg .jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;35;1mImage Create (0.7ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 7603243, '2009-09-12 17:44:48', 'image/jpeg', '2009-09-12 17:44:48', 'IMG_3496m.jpg .jpg')[0m
+Completed in 2738ms (View: 2, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:48) [POST]
+  Parameters: {"Filename"=>"IMG_3498m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6928141, '2009-09-12 17:44:51', 'image/jpeg', '2009-09-12 17:44:51', 'IMG_3498m.jpg')[0m
+Completed in 2661ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:51) [POST]
+  Parameters: {"Filename"=>"IMG_3516m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.1>}
+  [4;35;1mImage Create (0.7ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 6906533, '2009-09-12 17:44:54', 'image/jpeg', '2009-09-12 17:44:54', 'IMG_3516m.jpg')[0m
+Completed in 2623ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:55) [POST]
+  Parameters: {"Filename"=>"IMG_3542m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9203593, '2009-09-12 17:44:57', 'image/jpeg', '2009-09-12 17:44:57', 'IMG_3542m.jpg')[0m
+Completed in 2794ms (View: 2, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:44:58) [POST]
+  Parameters: {"Filename"=>"IMG_3628m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.2>}
+  [4;35;1mImage Create (0.6ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 5124668, '2009-09-12 17:45:00', 'image/jpeg', '2009-09-12 17:45:00', 'IMG_3628m.jpg')[0m
+Completed in 2304ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:45:01) [POST]
+  Parameters: {"Filename"=>"IMG_3676m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.6ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9597866, '2009-09-12 17:45:04', 'image/jpeg', '2009-09-12 17:45:04', 'IMG_3676m.jpg')[0m
+Completed in 2952ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:45:11) [GET]
+  [4;35;1mImage Load (1.5ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 24ms (View: 17, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2009-09-12 11:45:16) [GET]
+  Parameters: {"id"=>"53"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 53) [0m
+Rendering template within layouts/images
+Rendering images/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/images/53]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:45:58) [GET]
+  [4;35;1mImage Load (1.1ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 18ms (View: 13, DB: 1) | 200 OK [http://localhost/images/]
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2009-09-12 11:49:19) [DELETE]
+  Parameters: {"id"=>"53"}
+  [4;36;1mImage Load (0.2ms)[0m   [0;1mSELECT * FROM "images" WHERE ("images"."id" = 53) [0m
+  [4;35;1mImage Destroy (0.3ms)[0m   [0mDELETE FROM "images" WHERE "id" = 53[0m
+Redirected to http://localhost:3000/images
+Completed in 11ms (DB: 1) | 302 Found [http://localhost/images/53]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 11:49:19) [GET]
+  [4;36;1mImage Load (1.1ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 49ms (View: 12, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:49:22) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 15ms (View: 10, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 11:49:34) [POST]
+  Parameters: {"Filename"=>"IMG_3676m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;35;1mImage Create (0.5ms)[0m   [0mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 9597866, '2009-09-12 17:49:37', 'image/jpeg', '2009-09-12 17:49:37', 'IMG_3676m.jpg')[0m
+Completed in 2867ms (View: 1, DB: 1) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 11:50:00) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 16ms (View: 11, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:54:46) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/prototype.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-09-12 11:54:46) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/effects.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:09:45) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2009-09-12 12:10:09) [POST]
+  Parameters: {"Filename"=>"IMG_3339m.jpg", "Upload"=>"Submit Query", "Filedata"=>#<File:/var/folders/ff/ffblGTVgGHO3SPgfD1DsiE+++TM/-Tmp-/RackMultipart.4363.0>}
+  [4;36;1mImage Create (0.7ms)[0m   [0;1mINSERT INTO "images" ("name", "image_file_size", "updated_at", "image_content_type", "created_at", "image_file_name") VALUES(NULL, 8834301, '2009-09-12 18:10:12', 'image/jpeg', '2009-09-12 18:10:12', 'IMG_3339m.jpg')[0m
+Completed in 2800ms (View: 2, DB: 1) | 200 OK [http://localhost/images]
+  [4;36;1mImage Delete all (2.8ms)[0m   [0;1mDELETE FROM "images" WHERE 1=1[0m
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 12:19:10) [GET]
+  [4;35;1mImage Load (0.4ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 12:19:11) [GET]
+  [4;36;1mImage Load (0.3ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 12:31:51) [GET]
+  [4;35;1mImage Load (0.3ms)[0m   [0mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 5ms (View: 2, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:31:54) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:33:19) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 61ms (View: 57, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:34:05) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:34:19) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:34:31) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 13ms (View: 8, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:34:53) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 12ms (View: 8, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:34:58) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 6ms (View: 2, DB: 0) | 200 OK [http://localhost/images/new]
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2009-09-12 12:35:12) [GET]
+  [4;36;1mImage Load (0.3ms)[0m   [0;1mSELECT * FROM "images" [0m
+Rendering template within layouts/images
+Rendering images/index
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/images]
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2009-09-12 12:38:09) [GET]
+Rendering template within layouts/images
+Rendering images/new
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/images/new]

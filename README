@@ -1,0 +1,11 @@
+== Welcome to fancyupload-rails
+
+This is a an out of the box rails app with fancyupload working.
+
+== Notes
+
+For the entire application, protect from forgery is false.
+
+The fancyupload scripts are copyright Harald Kirschner <http://digitarald.de>.  I downloaded the "working fancyupload installation" from his site and took the relevant pieces for a rails app.
+
+Enjoy!
